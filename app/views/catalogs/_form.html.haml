@@ -1,0 +1,10 @@
+= simple_form_for(@catalog, wrapper: :horizontal_form, html: { class: 'form-horizontal catalog' }) do |f|
+
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :description
+
+  .form-actions
+    = f.button :submit, class: "btn btn-success"

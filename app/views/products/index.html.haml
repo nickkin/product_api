@@ -1,0 +1,24 @@
+%h1 Listing products
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th.col-sm-4 Name
+      %th.col-sm-4 Description
+      %th.col-sm-1 Price
+      %th.col-sm-3
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.name
+        %td= truncate(product.description, length: 150)
+        %td= product.price
+        %td.text-right
+          = link_to 'Show', product, class: "btn btn-default"
+          = link_to 'Edit', edit_product_path(product), class: "btn btn-success"
+          = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+
+%br
+
+= link_to 'New Product', new_product_path

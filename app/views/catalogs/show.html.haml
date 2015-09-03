@@ -1,0 +1,30 @@
+%p
+  %b Name:
+  = @catalog.name
+%p
+  %b Description:
+  = @catalog.description
+
+%p
+  %b Products in catalog:
+  %table.table.table-striped
+    %thead
+      %tr
+        %th.col-sm-4 Name
+        %th.col-sm-4 Description
+        %th.col-sm-1 Price
+        %th.col-sm-3
+
+    %tbody
+      - @catalog.products.each do |product|
+        %tr
+          %td= product.name
+          %td= truncate(product.description, length: 150)
+          %td= product.price
+          %td.text-right
+            = link_to 'Show', product, class: "btn btn-default"
+
+= link_to 'Create Product', new_product_path(catalog_id: @catalog.id), class: "btn btn-primary"
+= link_to 'Edit', edit_catalog_path(@catalog)
+\|
+= link_to 'Back', catalogs_path
